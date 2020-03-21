@@ -10,7 +10,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','type','description','price','slug','quantity'
+        'name','type','description','price','slug','quantity','is_default'
     ];
 
     protected $hidden = [
@@ -19,6 +19,11 @@ class Product extends Model
 
     public function galleries() {
 
-        // return $this->hasMany(ProductGallery::class, 'products_id');
+        return $this->hasMany(ProductGallery::class, 'products_id');
     }
+
+    // public function transactionDetails() {
+
+    //     return $this->hasMany(TransactionDetail::class, 'product_id');
+    // }
 }

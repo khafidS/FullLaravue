@@ -13,8 +13,18 @@
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
 
-Route::resource('product', 'ProductController');
+Auth::routes(['register' => false]);
 
-Auth::routes(['register' => true]);
+Route::get('product/{id}/gallery','ProductController@gallery')
+        ->name('product.gallery');
+
+
+Route::resource('product', 'ProductController');
+Route::resource('product-galleries', 'ProductGalleryController');
+
+Route::get('transactions/{id}/set-status','TransactionController@setStatus')
+        ->name('transactions.status');
+Route::resource('transactions', 'TransactionController');
+
 
 // Route::get('/home', 'HomeController@index')->name('home');
